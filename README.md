@@ -1,0 +1,1 @@
+$ Glowing Winner Clicker
