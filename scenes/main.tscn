@@ -9,8 +9,14 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Game" parent="." instance=ExtResource("2_0wfyh")]
+visible = false
 layout_mode = 0
 offset_left = 45.0
 offset_top = 51.0
 offset_right = 433.0
 offset_bottom = 391.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 480.0
+offset_bottom = 640.0
