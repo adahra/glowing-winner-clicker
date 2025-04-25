@@ -17,6 +17,7 @@ var upgrade_cost: int = 20
 func _ready() -> void:
 	update_ui()
 	timer.start()
+	$RestartButton.hide()
 
 func update_ui() -> void:
 	$VBoxContainer2/PositiveLabel.text = "Positive: %d" % positive_balance
@@ -32,11 +33,17 @@ func check_balance():
 func game_over():
 	$GameOverLabel.text = "Game Over! Balance lost."
 	
-	$VBoxContainer/HBoxContainer/PositiveButton.disabled = true
-	$VBoxContainer/HBoxContainer/NegativeButton.disabled = true
-	$VBoxContainer/HBoxContainer/UpgradeButton.disabled = true
+	main_button(true)
+	
+	$VBoxContainer.hide()
+	$RestartButton.show()
 	
 	timer.stop()
+
+func main_button(disabled: bool) -> void:
+	$VBoxContainer/HBoxContainer/PositiveButton.disabled = disabled
+	$VBoxContainer/HBoxContainer/NegativeButton.disabled = disabled
+	$VBoxContainer/UpgradeButton.disabled = disabled
 
 func _on_positive_button_pressed() -> void:
 	positive_balance += positive_click_effect
@@ -68,4 +75,29 @@ func _on_timer_timeout() -> void:
 	positive_balance += positive_idle_rate
 	negative_balance += negative_idle_rate
 	check_balance()
+	update_ui()
+
+
+
+func _on_restart_button_pressed() -> void:
+	# Reset semua variabel ke nilai awal
+	positive_balance = 50
+	negative_balance = 50
+	positive_idle_rate = 1
+	negative_idle_rate = 1
+	positive_click_effect = 1
+	negative_click_effect = 1
+	upgrade_cost = 20
+
+	# Reset UI dan tombol
+	main_button(false)
+	
+	$VBoxContainer.show()
+	$RestartButton.hide()
+	
+	$GameOverLabel.text = ""
+	
+	timer.start()
+
+	# Perbarui UI
 	update_ui()
