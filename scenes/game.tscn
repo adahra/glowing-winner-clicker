@@ -1,0 +1,103 @@
+[gd_scene load_steps=6 format=3 uid="uid://bfijmx8m3kdiv"]
+
+[ext_resource type="Script" uid="uid://dq2jg8ao8pa4d" path="res://scripts/game.gd" id="1_iywne"]
+[ext_resource type="FontFile" uid="uid://kyio6vbk5ttr" path="res://assets/fonts/Pixel Game.otf" id="1_lbhrr"]
+[ext_resource type="Texture2D" uid="uid://8idv54om1bx8" path="res://assets/ui/Green/Default/button_rectangle_gloss.png" id="2_iywne"]
+[ext_resource type="Texture2D" uid="uid://irhp8223gr8a" path="res://assets/ui/Green/Default/button_rectangle_gradient.png" id="3_p57ef"]
+[ext_resource type="Texture2D" uid="uid://u107488eyrqq" path="res://assets/ui/Green/Default/button_rectangle_depth_gradient.png" id="4_u5sy4"]
+
+[node name="VBoxContainer3" type="VBoxContainer"]
+offset_left = 47.0
+offset_top = 57.0
+offset_right = 435.0
+offset_bottom = 397.0
+script = ExtResource("1_iywne")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="PositiveLabel" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_lbhrr")
+theme_override_font_sizes/font_size = 46
+text = "Positive:"
+
+[node name="NegativeLabel" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_lbhrr")
+theme_override_font_sizes/font_size = 46
+text = "NEGATIVE"
+
+[node name="UpgradeCostLabel" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_lbhrr")
+theme_override_font_sizes/font_size = 46
+text = "UPGRADE"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="PositiveButton" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_iywne")
+texture_pressed = ExtResource("3_p57ef")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/PositiveButton"]
+layout_mode = 0
+offset_right = 192.0
+offset_bottom = 63.0
+theme_override_fonts/font = ExtResource("1_lbhrr")
+theme_override_font_sizes/font_size = 46
+text = "POSITIVE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NegativeButton" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_iywne")
+texture_pressed = ExtResource("3_p57ef")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/NegativeButton"]
+layout_mode = 0
+offset_right = 191.0
+offset_bottom = 63.0
+theme_override_fonts/font = ExtResource("1_lbhrr")
+theme_override_font_sizes/font_size = 46
+text = "NEGATIVE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UpgradeButton" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_iywne")
+texture_pressed = ExtResource("4_u5sy4")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/UpgradeButton"]
+layout_mode = 0
+offset_right = 386.0
+offset_bottom = 66.0
+theme_override_fonts/font = ExtResource("1_lbhrr")
+theme_override_font_sizes/font_size = 46
+text = "UPGRADE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameOverLabel" type="Label" parent="."]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_lbhrr")
+theme_override_font_sizes/font_size = 46
+horizontal_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/PositiveButton" to="." method="_on_positive_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/NegativeButton" to="." method="_on_negative_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/UpgradeButton" to="." method="_on_upgrade_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
