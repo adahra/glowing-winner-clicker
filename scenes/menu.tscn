@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3jvplwktec0c"]
+
+[ext_resource type="FontFile" uid="uid://kyio6vbk5ttr" path="res://assets/fonts/Pixel Game.otf" id="1_yqeox"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="TitleLabel" type="Label" parent="."]
+layout_mode = 0
+anchor_left = 0.4
+anchor_top = 0.2
+anchor_right = 0.6
+anchor_bottom = 0.3
+theme_override_fonts/font = ExtResource("1_yqeox")
+theme_override_font_sizes/font_size = 46
+text = "Balance Game"
+horizontal_alignment = 1
