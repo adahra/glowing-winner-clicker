@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bfijmx8m3kdiv"]
+[gd_scene load_steps=7 format=3 uid="uid://bfijmx8m3kdiv"]
 
 [ext_resource type="Script" uid="uid://dq2jg8ao8pa4d" path="res://scripts/game.gd" id="1_iywne"]
 [ext_resource type="FontFile" uid="uid://kyio6vbk5ttr" path="res://assets/fonts/Pixel Game.otf" id="1_lbhrr"]
 [ext_resource type="Texture2D" uid="uid://8idv54om1bx8" path="res://assets/ui/Green/Default/button_rectangle_gloss.png" id="2_iywne"]
 [ext_resource type="Texture2D" uid="uid://irhp8223gr8a" path="res://assets/ui/Green/Default/button_rectangle_gradient.png" id="3_p57ef"]
 [ext_resource type="Texture2D" uid="uid://u107488eyrqq" path="res://assets/ui/Green/Default/button_rectangle_depth_gradient.png" id="4_u5sy4"]
+[ext_resource type="Texture2D" uid="uid://bci2kwhjunob5" path="res://assets/ui/Green/Default/button_rectangle_depth_gloss.png" id="6_p57ef"]
 
 [node name="VBoxContainer3" type="VBoxContainer"]
 offset_left = 47.0
@@ -92,12 +93,45 @@ vertical_alignment = 1
 [node name="GameOverLabel" type="Label" parent="."]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_lbhrr")
-theme_override_font_sizes/font_size = 46
+theme_override_font_sizes/font_size = 38
 horizontal_alignment = 1
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="RestartButton" type="TextureButton" parent="."]
+layout_mode = 2
+texture_normal = ExtResource("6_p57ef")
+texture_pressed = ExtResource("4_u5sy4")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="RestartButton"]
+layout_mode = 0
+offset_right = 388.0
+offset_bottom = 64.0
+theme_override_fonts/font = ExtResource("1_lbhrr")
+theme_override_font_sizes/font_size = 46
+text = "RESTART"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QuitButton" type="TextureButton" parent="."]
+layout_mode = 2
+texture_normal = ExtResource("6_p57ef")
+texture_pressed = ExtResource("4_u5sy4")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="QuitButton"]
+layout_mode = 0
+offset_right = 388.0
+offset_bottom = 64.0
+theme_override_fonts/font = ExtResource("1_lbhrr")
+theme_override_font_sizes/font_size = 46
+text = "QUIT"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/PositiveButton" to="." method="_on_positive_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/NegativeButton" to="." method="_on_negative_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/UpgradeButton" to="." method="_on_upgrade_button_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]
